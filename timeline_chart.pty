@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>TimeLine Chart</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/timeline_chart.css" />
+    <script src="/static/js/timeline_chart.js"></script>
+
+  </head>
+  <body>
+
+  <section>
+    <div>Team</div>
+    <div>
+    <input type="radio" name="hoge" value="team_a" checked id="radio01" />
+    <label for="radio01" class="radio team_1_select">Team A</label>
+
+    <input type="radio" name="hoge" value="tema_b" id="radio02" />
+    <label for="radio02" class="radio team_2_select">Team B</label>
+
+    <input type="radio" name="hoge" value="team_c" id="radio03" />
+    <label for="radio03" class="radio team_3_select">Team C</label>
+
+    <input type="radio" name="hoge" value="team_d" id="radio04" />
+    <label for="radio04" class="radio team_4_select">Team D</label>
+
+    <input type="radio" name="hoge" value="team_e" id="radio05" />
+    <label for="radio05" class="radio team_5_select">Team E</label>
+
+    <input type="radio" name="hoge" value="team_f" id="radio06" />
+    <label for="radio06" class="radio team_6_select">Team F</label>
+
+    <input type="radio" name="hoge" value="team_g" id="radio07" />
+    <label for="radio07" class="radio team_7_select">Team G</label>
+
+    <input type="radio" name="hoge" value="team_g" id="radio08" />
+    <label for="radio08" class="radio team_8_select">Team H</label>
+
+    <input type="radio" name="hoge" value="team_h" id="lock" checked=true/>
+    <label for="lock" class="radio team_lock_select">Lock</label>
+
+    </div>
+
+  </section>
+<!-- 1 -->
+<div>TimeLine Chart</div>
+<div>2018</div>
+
+<div>Jan</div>
+<div>
+<table id="table_01">
+  <thead></thead>
+  <tr>
+    <th class="table_title">Category</th>
+    % for day_s in range(1,32):
+    %    if day_s == 1 or day_s == 2 or day_s == 3 or day_s == 7 or day_s == 8 or day_s == 14 or day_s == 21 or day_s == 28:
+            <th class="table_day sunday">{{day_s}}</th>
+    %     elif day_s == 6 or day_s == 13 or day_s == 20 or day_s == 27:
+            <th class="table_day saturday">{{day_s}}</th>
+    %     else:
+            <th class="table_day">{{day_s}}</th>
+    %     end
+    % end
+    <th class="table_title">Category</th>
+  </tr>
+
+  % for data_a in data:
+    <tr>
+      <th>{{data_a["category"]}}</th>
+      % for day_s in range(1,32):
+      %   if data_a["days"][0][day_s-1] == 0:
+        <td id="{{data_a["category"]}}_1_{{day_s}}"></td>
+      %   elif data_a["days"][0][day_s-1] != 0:
+        <td id="{{data_a["category"]}}_1_{{day_s}}" class="team_{{data_a["days"][0][day_s-1]}}_select"></td>
+      %   end
+      % end
+      <th>{{data_a["category"]}}</th>
+    </tr>
+  % end
+
+</table>
+</div>
+<!-- 2 -->
+<div>Feb</div>
+<div>
+<table id="table_02">
+  <thead></thead>
+  <tr>
+    <th class="table_title">Category</th>
+    % for day_s in range(1,29):
+    %    if day_s == 4 or day_s == 11 or day_s == 12 or day_s == 18 or day_s == 25:
+            <th class="table_day sunday">{{day_s}}</th>
+    %     elif day_s == 3 or day_s == 10 or day_s == 17 or day_s == 24:
+            <th class="table_day saturday">{{day_s}}</th>
+    %     else:
+            <th class="table_day">{{day_s}}</th>
+    %     end
+    % end
+    <th class="table_title">Category</th>
+  </tr>
+
+  % for data_a in data:
+    <tr>
+      <th>{{data_a["category"]}}</th>
+      % for day_s in range(1,29):
+      %   if data_a["days"][1][day_s-1] == 0:
+        <td id="{{data_a["category"]}}_2_{{day_s}}"></td>
+      %   elif data_a["days"][1][day_s-1] != 0:
+        <td id="{{data_a["category"]}}_2_{{day_s}}" class="team_{{data_a["days"][1][day_s-1]}}_select"></td>
+      %   end
+      % end
+      <th>{{data_a["category"]}}</th>
+    </tr>
+  % end
+</table>
+</div>
+
+<!-- 3 -->
+<div>Mar</div>
+<div>
+
+<table id="table_03">
+  <thead></thead>
+  <tr>
+    <th class="table_title">Category</th>
+    % for day_s in range(1,32):
+    %    if day_s == 4 or day_s == 11 or day_s == 18 or day_s == 25 or day_s == 21:
+            <th class="table_day sunday">{{day_s}}</th>
+    %     elif day_s == 3 or day_s == 10 or day_s == 17 or day_s == 24 or day_s == 31:
+            <th class="table_day saturday">{{day_s}}</th>
+    %     else:
+            <th class="table_day">{{day_s}}</th>
+    %     end
+    % end
+    <th class="table_title">Category</th>
+  </tr>
+
+  % for data_a in data:
+    <tr>
+      <th>{{data_a["category"]}}</th>
+      % for day_s in range(1,32):
+      %   if data_a["days"][2][day_s-1] == 0:
+        <td id="{{data_a["category"]}}_3_{{day_s}}"></td>
+      %   elif data_a["days"][2][day_s-1] != 0:
+        <td id="{{data_a["category"]}}_3_{{day_s}}" class="team_{{data_a["days"][2][day_s-1]}}_select"></td>
+      %   end
+      % end
+      <th>{{data_a["category"]}}</th>
+    </tr>
+  % end
+
+
+</table>
+</div>
+
+
+  </body>
+</html>
